@@ -53,18 +53,6 @@ After successful payment, the system generates a **ticket receipt**, which is sa
 
 ---
 
-## 🧱 Code Structure
-
-File | Description
-main.cpp | Entry point of the program, handles the initial menu and user interaction
-project.h | Header file for ticket types, locations, and booking utilities
-project.cpp | Implements ticket booking, location handling, and user-side logic
-Account.h | Contains class declarations for accounts and payments
-Account.cpp | Implements account handling, card validation (Luhn), and payment system
-Users.txt | Stores registered usernames and passwords
-Accounts.txt | Stores card details and balances for payment
----
-
 ## 🧰 Tech Stack
 
 - **Language:** C++
