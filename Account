@@ -1,0 +1,66 @@
+#ifndef ACCOUNT
+#define ACCOUNT
+
+#include <map>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <ctime>
+#include <iomanip>
+#include "project"
+
+class User_Panel {
+    private:
+        std::string Username;
+        std::string Password;
+        bool Login_Verification(const std::string &username_parameter, const std::string &password_parameter);
+        virtual void Menu_Panel() = 0;
+    public:
+        User_Panel();
+        User_Panel(const std::string &username_parameter, const std::string &password_parameter);
+        void Input_login_Details();
+        void SignUp(const std::string &file_path);
+};
+
+class Admin : public User_Panel {
+        void Menu_Panel();
+    public:
+        Admin();
+        Admin(const std::string &username_parameter, const std::string &password_parameter);
+};
+
+class Customer : public User_Panel {
+        void Menu_Panel();
+    public:
+        Customer();
+        Customer(const std::string &username_parameter, const std::string &password_parameter);
+};
+
+class Account {
+private:
+    struct AccountInfo {
+        std::string pin;
+        double balance;
+        std::string cvv;
+        std::string expiry;
+    };
+    std::map<std::string, AccountInfo> accounts; 
+
+    bool IsCardExpired(const std::string& expiryDate);
+    bool IsValidMasterCard(const std::string& cardNumber); 
+
+public:
+    void LoadAccountsFromFile(const std::string& filename);
+    bool ProcessPayment(const std::string& cardNumber, const std::string& enteredPin, const std::string& enteredCvv, const std::string& expiryDate, double amount);
+};
+
+class Home {
+    Admin admin;
+    Customer user;
+    public:
+        Home() {}
+        void Front_Page();
+        void Profile();
+};
+
+#endif

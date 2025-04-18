@@ -1,0 +1,47 @@
+===============================
+         AIRPLANE TICKET       
+==============================
+         TICKET DETAILS        
+==============================
+Name               : Ahsan
+Registration Number: REG123
+Bar Code           : BAR456
+Date               : 2024-12-10
+Time               : 10:00 AM
+Seat               : 12A
+Price              : $500.00
+------------------------------
+Source             : 
+Destination        : 
+Class              : Business
+==============================
+==============================
+         TICKET DETAILS        
+==============================
+Name               : Ali
+Registration Number: REG789
+Bar Code           : BAR321
+Date               : 2024-12-11
+Time               : 08:00 AM
+Seat               : S-5
+Price              : $150.00
+------------------------------
+Source             : 
+Destination        : 
+Class              : First Class
+==============================
+==============================
+         TICKET DETAILS        
+==============================
+Name               : Raja
+Registration Number: REG456
+Bar Code           : BAR654
+Date               : 2024-12-12
+Time               : 07:00 AM
+Seat               : B12
+Price              : $30.00
+------------------------------
+Source             : 
+Destination        : 
+Stop Over          : Midway Stop
+==============================

@@ -1,0 +1,103 @@
+#ifndef PROJECT
+#define PROJECT
+#include <iostream>
+#include <fstream>
+#include <ostream>
+#include <iomanip>
+#include <ctime>
+
+//////////////////////////////////////  CLASS'S DECLERATION  /////////////////////////////////////////
+// -------------------------------------------------------------------------------------------------//
+
+class Ticket {
+    std::string Registration_number,Bar_Code;
+    std::string Date,Time;
+    std::string Name,Seat;
+    double Price;
+
+    public:
+        Ticket();
+        Ticket(const std::string& reg_no,const std::string& scan_code,std::string date,std::string time,std::string Person_name,std::string seat_no,double ticket_price);
+        virtual void Print_Ticket_To_File(std::ofstream &outfile) const;
+        void PrintTicketDetails() const;
+        void view_tickets() const ;
+};
+
+class Location {
+    std::string source;
+    std::string destination;
+
+public:
+    Location() {}
+    Location(const std::string &src, const std::string &dest);
+    std::string GetSource() const;
+    std::string GetDestination() const;
+    void PrintLocation() const;
+};
+
+class TravelTicket : public Ticket {
+    Location route;
+    std::string bookingTime;
+    std::string arrivalTime;
+
+public:
+    TravelTicket(const std::string &reg_no, const std::string &scan_code, const std::string &date,
+                 const std::string &time, const std::string &person_name, const std::string &seat_no, 
+                 double ticket_price, const Location &loc, const std::string &arrival);
+
+    void PrintTicketDetails() const ;
+    std::string GetCurrentTime() const;
+};
+
+class AirplaneTicket : public TravelTicket {
+    std::string flightClass;
+    Location route;
+public:
+    AirplaneTicket(const std::string &reg_no, const std::string &scan_code, const std::string &date,
+                   const std::string &time, const std::string &person_name, const std::string &seat_no,
+                   double ticket_price, const Location &loc, const std::string &arrival, const std::string &flight_class);
+
+    void PrintTicketDetails() const ;
+    void Print_Ticket_To_File(const std::string &filename) const;
+};
+
+class TrainTicket : public TravelTicket {
+    std::string seatClass;
+    Location route;
+public:
+    TrainTicket(const std::string &reg_no, const std::string &scan_code, const std::string &date,
+                const std::string &time, const std::string &person_name, const std::string &seat_no,
+                double ticket_price, const Location &loc, const std::string &arrival, const std::string &seat_class);
+
+    void PrintTicketDetails() const ;
+    void Print_Ticket_To_File(const std::string &filename) const;
+
+};
+
+class BusTicket : public TravelTicket {
+    std::string stopOver;
+    Location route;
+public:
+    BusTicket(const std::string &reg_no, const std::string &scan_code, const std::string &date,
+              const std::string &time, const std::string &person_name, const std::string &seat_no,
+              double ticket_price, const Location &loc, const std::string &arrival, const std::string &stop);
+
+    void PrintTicketDetails() const ;
+    void Print_Ticket_To_File(const std::string &filename) const;
+};
+
+class CinemaTicket : public Ticket {
+private:
+    std::string movieName;
+    std::string screenNumber;
+
+public:
+    CinemaTicket(const std::string &reg_no, const std::string &scan_code, const std::string &date,
+                 const std::string &time, const std::string &person_name, const std::string &seat_no,
+                 double ticket_price, const std::string &movie, const std::string &screen);
+
+    void PrintTicketDetails() const ;
+    // void Print_Ticket_To_File(const std::string &filename) const;
+};
+
+#endif 
